@@ -30,7 +30,9 @@ export default Vue.extend({
   },
   computed: {
     exclamationMarks(): string {
-      return Array(this.enthusiasm + 1).join('=').concat('>');
+      return Array(this.enthusiasm + 1)
+        .join('=')
+        .concat('>');
     },
   },
 });
