@@ -12,11 +12,18 @@
 import Vue from 'vue';
 
 export default Vue.extend({
-  props: ['name', 'initialEnthusiasm'],
+  props: { name: { type: String, default: 'Bro!' }, initialEnthusiasm: { type: Number, default: 5 } },
   data() {
     return {
       enthusiasm: this.initialEnthusiasm,
     };
+  },
+  computed: {
+    exclamationMarks(): string {
+      return Array(this.enthusiasm + 1)
+        .join('=')
+        .concat('>');
+    },
   },
   methods: {
     increment() {
@@ -26,13 +33,6 @@ export default Vue.extend({
       if (this.enthusiasm > 1) {
         this.enthusiasm--;
       }
-    },
-  },
-  computed: {
-    exclamationMarks(): string {
-      return Array(this.enthusiasm + 1)
-        .join('=')
-        .concat('>');
     },
   },
 });
